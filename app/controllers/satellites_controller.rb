@@ -1,0 +1,2 @@
+class SatellitesController < ApplicationController
+end

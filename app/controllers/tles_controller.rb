@@ -1,0 +1,2 @@
+class TlesController < ApplicationController
+end
