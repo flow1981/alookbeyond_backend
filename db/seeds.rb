@@ -14,18 +14,21 @@ puts "created #{Watchlist.all.length} watchlists"
 
 # url = "https://www.celestrak.com/NORAD/elements/active.txt"
 
-constellations =[
-'gps-ops','glo-ops','galileo','beidou','sbas','nnss','musson'
+constellations =['gps-ops','glo-ops','galileo'
+# 'gps-ops','glo-ops','galileo','beidou','sbas','nnss','musson'
 # 'active'
 ]
+
+watchlists = constellations
 
 constellations.each{|c|
 
     url   = "https://www.celestrak.com/NORAD/elements/" + c + ".txt"
     constellation =Constellation.create(name: c, displayed: false)
-    TLEs = WebReader.parseTextToTleHashes(url)
-    TLEs.each{|data|
-        sat = Satellite.create(name: data[:name], constellation_id: constellation.id)
+    watchlist =Watchlist.create(name: c, displayed: false, user_id: User.all.first.id)
+    tles = WebReader.parseTextToTleHashes(url)
+    tles.each{|data|
+        sat = Satellite.create(name: data[:name], constellation_id: constellation.id, watchlist_id: watchlist.id)
         Tle.create(
             satellite_id: sat.id,   
                 sat_name: data[:name],           
@@ -36,19 +39,19 @@ constellations.each{|c|
 }
 
 
-url_iss = "https://live.ariss.org/iss.txt"
-url_iss = "https://www.tle.info/data/TLELIST.TXT"
+# url_iss = "https://live.ariss.org/iss.txt"
+# url_iss = "https://www.tle.info/data/TLELIST.TXT"
 
-    TLEiss = WebReader.parseTextToTleHashes(url_iss)
-    TLEiss.each{|data|
-        sat = Satellite.create(name: data[:name])
-        Tle.create(
-            satellite_id: sat.id,   
-                sat_name: data[:name],           
-                line1: data[:TLE1],
-                line2: data[:TLE2]
-        )
-    }
+#     TLEiss = WebReader.parseTextToTleHashes(url_iss)
+#     TLEiss.each{|data|
+#         sat = Satellite.create(name: data[:name])
+#         Tle.create(
+#             satellite_id: sat.id,   
+#                 sat_name: data[:name],           
+#                 line1: data[:TLE1],
+#                 line2: data[:TLE2]
+#         )
+#     }
 
 
 # url_radar = "https://www.celestrak.com/NORAD/elements/radar.txt"

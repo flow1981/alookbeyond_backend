@@ -1,3 +1,3 @@
 class Constellation < ApplicationRecord
-    has_many :satellites
+    has_many :satellites, dependent: :destroy
 end

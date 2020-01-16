@@ -6,7 +6,7 @@ class WatchlistSerializer
     
     def to_serialized_json
         @watchlist_object.to_json(
-        :only => [:name],
+        :only => [:name, :id],
         :include => {:user => { :only => [:username]},
                     :satellites => { :only => [:name],
                                      :include => {:tle => {:only =>[:line1,:line2]}}
