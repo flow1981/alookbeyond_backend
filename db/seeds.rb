@@ -58,7 +58,6 @@ constellations.each{|c|
 #         )
 #     }
 
-
 puts "created #{Constellation.all.length} constellations"
 puts "created #{Satellite.all.length} satellites"
 puts "created #{Tle.all.length} TLE"
