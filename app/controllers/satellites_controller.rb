@@ -1,7 +1,8 @@
 class SatellitesController < ApplicationController
 
     def index
-        satellites = Satellite.all
+        # satellites = Satellite.all
+        satellites = Satellite.all.includes(:tle)
         # render json: satellites
         render json: SatelliteSerializer.new(satellites).to_serialized_json
     end

@@ -14,8 +14,13 @@ puts "created #{Watchlist.all.length} watchlists"
 
 # url = "https://www.celestrak.com/NORAD/elements/active.txt"
 
-constellations =['gps-ops','glo-ops','galileo'
-# 'gps-ops','glo-ops','galileo','beidou','sbas','nnss','musson'
+constellations =[
+# Navigation
+'gps-ops','glo-ops','galileo','beidou','sbas','nnss','musson',
+# Communication
+'iridium','starlink','orbcomm','globalstar','raduga','satnog','molniya','gorizont','amateur',
+# Weather and Earth Resources
+'spire','planet','noaa','tdrss','argos','sarsat','weather','goes'
 # 'active'
 ]
 
