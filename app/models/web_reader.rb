@@ -3,7 +3,10 @@ require 'open-uri'
 require 'byebug'
 class WebReader < ApplicationRecord
 
-    def self.parseTextToTleHashes(url)
+    def self.getTLEsFromCelestrak(search_term)
+
+        url   = "https://www.celestrak.com/NORAD/elements/" + search_term + ".txt"
+
         webContent  = open(url)  {|f| 
             counter = 0
             arrayOfHashes = []
@@ -24,6 +27,12 @@ class WebReader < ApplicationRecord
         }
     end
 
-end
+    def self.getSummaryFromWikipedia(article_name)
 
-# web_content  = open('https://www.celestrak.com/NORAD/elements/orbcomm.txt') {|f| f.read }
+        url = 'https://en.wikipedia.org/api/rest_v1/page/summary/' + article_name
+        webContent  = open(url).read
+        result = JSON.parse(webContent)["extract"]
+        return result
+    end
+
+end

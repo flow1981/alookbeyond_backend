@@ -11,14 +11,15 @@ puts "created #{User.all.length} users"
 def createResources(constellations)
 
     constellations.each{ |c|
-        puts c
-        puts c.class
-        constellation = Constellation.create(name: c[:name], category: c[:category], displayed: false)
+
+        description = WebReader.getSummaryFromWikipedia(c[:wikipedia])
+       
+        constellation = Constellation.create(name: c[:name], category: c[:category], description: description,displayed: false)
 
         watchlist = Watchlist.create(name: c[:name], displayed: false, user_id: User.all.first.id)
 
-        url   = "https://www.celestrak.com/NORAD/elements/" + c[:celestrak] + ".txt"
-        tles = WebReader.parseTextToTleHashes(url)
+        tles = WebReader.getTLEsFromCelestrak(c[:celestrak])
+
         tles.each{|data|
             sat = Satellite.create( name: data[:name],
                                     line1: data[:TLE1],
