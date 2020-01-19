@@ -8,7 +8,6 @@ class ConstellationsController < ApplicationController
     end
 
     def show
-
         constellation = Constellation.find(params[:id])
         # render json: watchlists
         render json: ConstellationDetailsSerializer.new(constellation).to_serialized_json
