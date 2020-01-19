@@ -6,9 +6,8 @@ class ConstellationDetailsSerializer
     
     def to_serialized_json
         @constellation_object.to_json(
-        :only => [:name, :id, :displayed],
-        :include => {:satellites => {   :only =>[:name, :id, :constellation_id],
-                                        :include => {:tle => { :only => [:line1, :line2]}}}}
+        :only => [:name, :id, :category, :displayed],
+        :include => {:satellites => {   :only =>[:name, :id, :constellation_id, :line1, :line2]}
         )
     end
 

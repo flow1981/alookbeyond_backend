@@ -6,9 +6,7 @@ class SatelliteSerializer
     
     def to_serialized_json
         @satellite_object.to_json(
-        :only => [:name, :id, :constellation_id],
-        :include => {:tle => { :only => [:line1, :line2]}
-                    }
+        :only => [:name, :id, :constellation_id, :line1, :line2]
         )
     end
 
