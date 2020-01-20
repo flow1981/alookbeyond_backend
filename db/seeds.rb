@@ -16,16 +16,13 @@ def createResources(constellations)
        
         constellation = Constellation.create(name: c[:name], category: c[:category], description: description,displayed: false)
 
-        watchlist = Watchlist.create(name: c[:name], displayed: false, user_id: User.all.first.id)
-
         tles = WebReader.getTLEsFromCelestrak(c[:celestrak])
 
         tles.each{|data|
             sat = Satellite.create( name: data[:name],
                                     line1: data[:TLE1],
                                     line2: data[:TLE2],
-                                    constellation_id: constellation.id,
-                                    watchlist_id: watchlist.id)
+                                    constellation_id: constellation.id)
         }
 
 
@@ -71,6 +68,12 @@ constellations = [GPS, GLONASS, GALILEO, BEIDOU, SBAA]
 
 createResources(constellations)
 
+
+Watchlist.create(name: "View 1", displayed: false, user_id: User.all.first.id)
+Watchlist.create(name: "View 2", displayed: false, user_id: User.all.first.id)
+Watchlist.create(name: "View 3", displayed: false, user_id: User.all.first.id)
+Watchlist.create(name: "View 4", displayed: false, user_id: User.all.first.id)
+
 # # Communication
 # constellations =['iridium','starlink','orbcomm','globalstar','raduga','satnog','molniya','gorizont','amateur']
 # category = 'Communication'
@@ -83,5 +86,6 @@ createResources(constellations)
 
 # createResources(constellations, category)
 
+puts "created #{Watchlist.all.length} watchlists"
 puts "created #{Constellation.all.length} constellations"
 puts "created #{Satellite.all.length} satellites"
