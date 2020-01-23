@@ -35,13 +35,13 @@ end
 
 GPS = {
     category:  'Navigation & Positioning',
-    name:       'Global Positioning System (GPS)',
+    name:       'GPS',
     celestrak:  'gps-ops',
     wikipedia:  'Global_Positioning_System'
 }
 GLONASS = {
     category:   'Navigation & Positioning',
-    name:       'GLObal NAvigation Satellite System (GLONASS)', 
+    name:       'GLONASS', 
     celestrak:  'glo-ops',
     wikipedia:  'GLONASS',
 }
@@ -53,18 +53,77 @@ GALILEO = {
 }
 BEIDOU = {
     category:   'Navigation & Positioning',
-    name:       'BeiDou Navigation Satellite System (BDS)',
+    name:       'BeiDou',
     celestrak:  'beidou',
     wikipedia:  'BeiDou'
 }
-SBAA = {
-    category:   'Navigation & Positioning',
-    name:       'Satellite-based augmentation systems (SBAS)',  
-    celestrak:  'sbas',
-    wikipedia:  'GNSS_augmentation#Satellite-based_augmentation_system'
+# SBAA = {
+#     category:   'Navigation & Positioning',
+#     name:       'Satellite-based augmentation systems (SBAS)',  
+#     celestrak:  'sbas',
+#     wikipedia:  'GNSS_augmentation#Satellite-based_augmentation_system'
+# }
+
+
+STARLINK = {
+    category:   'Communication',
+    name:       'Starlink',
+    celestrak:  'starlink',
+    wikipedia:  'Starlink_(satellite_constellation)'
 }
 
-constellations = [GPS, GLONASS, GALILEO, BEIDOU, SBAA]
+
+IRIDIUM = {
+    category:   'Communication',
+    name:       'Iridium',
+    celestrak:  'iridium',
+    wikipedia:  'Iridium_satellite_constellation'
+}
+
+ORBCOM = {
+    category:   'Communication',
+    name:       'Orbcomm',
+    celestrak:  'orbcomm',
+    wikipedia:  'Iridium_satellite_constellation'
+}
+
+GLOBALSTAR = {
+    category:   'Communication',
+    name:       'Globalstar',
+    celestrak:  'globalstar',
+    wikipedia:  'Globalstar'
+}
+
+SPIRE = {
+    category:   'Weather and Earth Resources',
+    name:       'Spire',
+    celestrak:  'spire',
+    wikipedia:  'Spire_Global'
+}
+
+NOAA = {
+    category:   'Weather and Earth Resources',
+    name:       'noaa',
+    celestrak:  'globalstar',
+    wikipedia:  'Globalstar'
+}
+
+PLANET = {
+    category:   'Weather and Earth Resources',
+    name:       'Planet',
+    celestrak:  'planet',
+    wikipedia:  'Planet_Labs'
+}
+
+TDRSS = {
+    category:   'Communication',
+    name:       'tdrss',
+    celestrak:  'tdrss',
+    wikipedia:  'Tracking_and_Data_Relay_Satellite_System'
+}
+
+
+constellations = [GPS, GLONASS, GALILEO, BEIDOU, STARLINK, IRIDIUM, GLOBALSTAR, SPIRE, NOAA, PLANET, TDRSS]
 
 createResources(constellations)
 

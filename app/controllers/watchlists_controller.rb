@@ -35,7 +35,7 @@ class WatchlistsController < ApplicationController
 
         Track.create(satellite_id: 3361, watchlist_id: 92)
         
-        render json: {}
+        render json: WatchlistSerializer.new(watchlist).to_serialized_json
     end
 
 
