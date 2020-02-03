@@ -9,8 +9,8 @@ class WatchlistsController < ApplicationController
 
     def show
         watchlist = Watchlist.find(params[:id])
-        # render json: watchlists
-        render json: WatchlistSerializer.new(watchlist).to_serialized_json
+        render json: watchlist
+        # render json: WatchlistSerializer.new(watchlist).to_serialized_json
     end
 
     def update
@@ -29,8 +29,6 @@ class WatchlistsController < ApplicationController
         satellites_ids.each do |sat_id|
             Track.create(satellite_id: sat_id, watchlist_id: watchlist.id)
          end
-
-        Track.create(satellite_id: 3361, watchlist_id: 92)
         
         render json: WatchlistSerializer.new(watchlist).to_serialized_json
     end
