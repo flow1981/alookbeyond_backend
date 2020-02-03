@@ -2,12 +2,11 @@ class WatchlistsController < ApplicationController
 
     def index
         watchlists = Watchlist.all
-        # render json: watchlists
-        render json: WatchlistSerializer.new(watchlists).to_serialized_json
+        render json: watchlists
+        # render json: WatchlistSerializer.new(watchlists).to_serialized_json
     end
 
     def show
-        # byebug
         watchlist = Watchlist.find(params[:id])
         # render json: watchlists
         render json: WatchlistSerializer.new(watchlist).to_serialized_json
@@ -16,8 +15,6 @@ class WatchlistsController < ApplicationController
     def update
         puts params["data"]["watchlist_id"]
         puts params["data"]["sat_ids"]
-
-        # byebug
         id  = params["data"]["watchlist_id"]
         watchlist = Watchlist.find_by(id: params["data"]["watchlist_id"])
 
@@ -29,7 +26,6 @@ class WatchlistsController < ApplicationController
         satellites_ids = params["data"]["sat_ids"]
 
         satellites_ids.each do |sat_id|
-            # byebug
             Track.create(satellite_id: sat_id, watchlist_id: watchlist.id)
          end
 
