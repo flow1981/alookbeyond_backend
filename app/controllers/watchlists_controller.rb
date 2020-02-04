@@ -9,8 +9,8 @@ class WatchlistsController < ApplicationController
 
     def show
         watchlist = Watchlist.find(params[:id])
-        render json: watchlist
-        # render json: WatchlistSerializer.new(watchlist).to_serialized_json
+        # render json: watchlist
+        render json: WatchlistSerializer.new(watchlist).to_serialized_json
     end
 
     def update
