@@ -1,6 +1,5 @@
 require 'json'
 require 'open-uri'
-require 'byebug'
 class WebReader < ApplicationRecord
 
     def self.getTLEsFromCelestrak(search_term)

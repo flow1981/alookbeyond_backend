@@ -8,7 +8,7 @@ class WatchlistSerializer
         @watchlist_object.to_json(
             :only => [:name, :id],
             :include => {   :user => { :only => [:username]},
-                            :satellites => { :only => [:id, :name]}
+                            :satellites => { :only => [:name, :id, :constellation_id, :line1, :line2, :displayed]}
             }
     )
         
